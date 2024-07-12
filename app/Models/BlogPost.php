@@ -12,6 +12,8 @@ class BlogPost extends Model
     protected $primaryKey = 'post_id'; // Digunakan untuk set PK ke 'post_id'. Defaultnya PK nya 'id'
     protected $fillable = ['title', 'author', 'slug', 'body']; // Digunakan untuk element apa saja yg dapat diisi
 
+    protected $with = ['author', 'category']; // Melakukan eager loading agar querry tidak banyak
+
     use HasFactory;
 
     // Membuat Relasi M to 1 menggunakan belongsTo

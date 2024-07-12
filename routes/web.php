@@ -15,7 +15,11 @@ Route::get('/about', function () {
 });
 
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Post Page', 'blogPosts' => BlogPost::all()]); // Mengirim data ke view
+    $blogPosts = BlogPost::latest()->get(); // Mengambil data terbaru
+    return view('posts', [
+        'title' => 'Post Page',
+        'blogPosts' => $blogPosts,
+    ]); // Mengirim data ke view
 });
 
 Route::get('/postDetail/{post:slug}', function (BlogPost $post) {  // Mencari data berdasarkan atribut slug
