@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -22,6 +23,7 @@ class BlogPostFactory extends Factory
             'title' => fake()->sentence(),
             // Mengenerate post sesuai dengan id dari user
             'author_id' => User::factory(), // Saat di generate, akan otomatis mengenerate User juga.
+            'category_id' => Category::factory(),
             'slug' => Str::slug(fake()->sentence()),
             'body' => fake()->text(),
         ];

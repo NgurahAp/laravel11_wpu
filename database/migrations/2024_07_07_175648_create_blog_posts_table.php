@@ -18,6 +18,10 @@ return new class extends Migration
                 table: 'users',
                 indexName: 'post_author_id'
             ); //Mengeset agar foreign key didapatkan dari user id
+            $table->foreignId('category_id')->constrained(
+                table: 'categories',
+                indexName: 'post_category_id'
+            );
             $table->string('slug')->unique(); // Agar tidak ada slug yang sama
             $table->text('body'); // Tipe data text karena isinya akan lebih panjang
             $table->timestamps();
