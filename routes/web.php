@@ -21,7 +21,7 @@ Route::get('/posts', function () {
 
     return view('posts', [
         'title' => 'Post Page',
-        'blogPosts' => BlogPost::filter(request(['search', 'category', 'author']))->latest()->get(), // Memanggil scope filter yang ada di model 
+        'blogPosts' => BlogPost::filter(request(['search', 'category', 'author']))->latest()->paginate(9)->withQueryString(), // Memanggil scope filter yang ada di model 
     ]); // Mengirim data ke view
 });
 

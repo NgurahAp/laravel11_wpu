@@ -27,6 +27,8 @@
             </div>
         </form>
 
+
+
         <div class="grid gap-8 lg:grid-cols-3 md:grid-cols-2">
 
             @forelse ($blogPosts as $post)
@@ -68,13 +70,21 @@
                     </div>
                 </article>
 
-            // Klo gaada element yang di search
+
+
+                {{-- Klo gaada elemetn yang di search --}}
             @empty
                 <div>
                     <p class="font-bold text-3xl my-4">No Post Found</p>
                     <a href="/posts" class="block text-blue-600 hover:underline">&laquo; Back to all posts</a>
                 </div>
             @endforelse
+
         </div>
+        {{-- Menampilkan paginate --}}
+        <div class="py-5">
+            {{ $blogPosts->links() }}
+        </div>
+
     </div>
 </x-layout>
