@@ -15,10 +15,13 @@ Route::get('/about', function () {
 });
 
 Route::get('/posts', function () {
-    $blogPosts = BlogPost::latest()->get(); // Mengambil data terbaru
+
+    // Mengambil req dari name yang ada di form
+    // dump(request('search'));
+
     return view('posts', [
         'title' => 'Post Page',
-        'blogPosts' => $blogPosts,
+        'blogPosts' => BlogPost::filter(request(['search', 'category', 'author']))->latest()->get(), // Memanggil scope filter yang ada di model 
     ]); // Mengirim data ke view
 });
 
